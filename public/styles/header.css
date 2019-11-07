@@ -11,7 +11,10 @@ header {
   background-color: #5f6ca1;
   background-image: url("https://www.transparenttextures.com/patterns/skulls.png");
 }
-
+#profilePic{
+  top: 10%;
+ position: relative;
+}
 header h2 {
   color: black;
   position: relative;

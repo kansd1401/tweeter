@@ -44,6 +44,20 @@ main {
    padding-top: 30px;
  }
 
+ @media only screen and (min-width: 1024px) {
+   .profile{
+     top:16%;
+     left: 3%;
+     width: 30%;
+     position: fixed;
+     float: left;
+   }
+   .container{
+     right: 2%;
+     width: 55%;
+     float: right;
+   }
+ }
 
 
 
