@@ -1,0 +1,20 @@
+header {
+  height: 400px;
+  width: 100%;
+  display: inline-block;
+  position: relative;
+  text-align: center;
+}
+
+.profile {
+  z-index: 4;
+  background-color: #5f6ca1;
+  background-image: url("https://www.transparenttextures.com/patterns/skulls.png");
+}
+
+header h2 {
+  color: black;
+  position: relative;
+  margin-top: 0px;
+  text-align: center;
+}

@@ -1,0 +1,33 @@
+
+body nav {
+  font-family: cursive, 'sans-serif';
+  position: fixed;
+  height: 120px;
+  width: 100%;
+  background-color: #4056A1;
+  color: #ffffff;
+  padding: 1.5em;
+  z-index: 5;
+}
+
+nav span {
+  font-family: 'Bungee', 'sans-serif';
+  position: relative;
+}
+
+.show-post {
+  position: relative;
+  font-weight: bolder;
+  text-align: center;
+  float: right;
+  width: 109px;
+}
+
+.writeTweet {
+  font-family: 'Source Sans Pro', sans-serif;  
+  position: relative;
+}
+
+#show-post:hover {
+  color: rgb(141, 153, 192);
+}

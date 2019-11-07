@@ -7,23 +7,71 @@
     <!-- External CSS -->
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
 
+   
     <!-- App CSS -->
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
 
+    <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
+
+    <link rel="stylesheet" href="/styles/header.css" type="text/css" />
+
+    <link rel="stylesheet" href="/styles/new-tweet.css" type="text/css" />
+
+    <link rel="stylesheet" href="/styles/tweet.css" type="text/css" />
+
+    <link href="https://fonts.googleapis.com/css?family=Bungee|Source+Sans+Pro:300i,600i&display=swap" rel="stylesheet">
+    
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0' />
+
+
     <!-- External JS -->
-    <script type="text/javascript" src="/vendor/jquery-2.2.3.min.js"></script>
+    <script  src="/vendor/jquery-2.2.3.min.js"></script>
 
     <!-- App JS -->
-    <script type="text/javascript" src="/scripts/client.js"></script>
+    <script  src="/scripts/client.js"></script>
+
+
+    <script src="https://kit.fontawesome.com/6264ea653b.js" crossorigin="anonymous"></script>
+
+    <script src="/scripts/composer-char-counter.js"></script>
+
   </head>
 
   <body>
     <!-- Top nav bar (fixed) -->
     <nav>
       <span>tweeter</span>
+      <div  class="show-post">
+          <span class="writeTweet">Post tweet</span>
+          <i id="show-post" class="fas fa-arrow-down"></i>
+        </div>
     </nav>
-
-    <!-- Page-specific (main) content here -->
-    <main class="container"></main>
+    <div class="spacer"></div>
+    <header class="profile">
+      <div>
+          <img src="/images/profile-hex.png"> 
+      </div>
+      <br>
+      <div>
+          <h2>Pepperoni Boi</h2>
+      </div>
+  </header>
+        <!-- Page-specific (main) content here -->
+    <main class="container">
+      <div id="inputTweet">
+      <form id='new-post' name="new-post" method="post">
+          <div class="warning">
+              <i class="fas fa-exclamation-triangle"></i>
+              Ooh baby what is you doing
+              <i class="fas fa-exclamation-triangle"></i>
+          </div>
+        <textarea id="input" cols="40" name="text" placeholder="What are you humming about?"></textarea>
+        <input id="btn" type="submit" value="Tweet" method="POST" action="/tweets">
+        <span id="counter" class="counter">140</span>
+      </form>
+      </div>
+      <section class="new-tweet">
+    </section>
+    </main>
   </body>
 </html>

@@ -1,0 +1,72 @@
+article {
+  text-align: left;
+  padding-bottom: 5px;
+  padding-top: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  top: 20px;
+  border: 3px solid black;
+  position: relative;
+  padding: 20px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+article:hover {
+  box-shadow: black;
+  font-weight: bold;
+  box-shadow: 10px 5px 5px black;
+}
+
+article:hover .userId {
+  visibility: visible;
+}
+
+.content {
+  padding:0px;
+  position: relative;
+  border-top: 0px;
+  border-bottom: 3px solid black;
+  border-right: 0px;
+  font-size: larger;
+  border-left: 0px;
+}
+
+article header {
+  height: auto;
+}
+.avatar {
+  height: 35px;
+  width: 35px;
+  float: left;
+  position: relative;
+}
+.userName {
+  font-size: medium;
+  padding:0px;
+  float: left;
+  font-size: 16px;
+  position: relative;
+}
+
+.userId {
+  font-size: medium;
+  padding:0px;
+  float: right;
+  visibility: hidden;
+  position: relative;
+}
+
+.life {
+  top: 0px;
+  font-size: medium;
+  position: block;
+  display: inline-block;
+}
+
+.shortcuts {
+  text-align: right;
+  float: right;
+  font-size: medium;
+  position: block;
+}

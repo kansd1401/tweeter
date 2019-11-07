@@ -5,6 +5,7 @@
  */
 html {
   box-sizing: border-box;
+  font-family: 'Source Sans Pro', sans-serif; 
 }
 *, *:before, *:after {
   box-sizing: inherit;
@@ -15,10 +16,36 @@ html {
  */
 
 body {
-  color: #545149;
-  background-color: #f4f1ec;
+  color: black;
   font-size: 24px;
+  position: relative;
 }
+
+body p {
+  top: 120px;
+  position: relative;
+}
+
+body .spacer {
+  height: 120px;
+}
+
+main {
+  border-radius: 0px;
+  position: relative;
+  background-color: #FFFFFF;
+  text-align: center;
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-bottom: 20px;
+  padding-top: 20px;
+}
+ .new-tweet {
+   padding-top: 30px;
+ }
+
+
+
 
 /*
  * Additional CSS can be defined below or in other CSS files, as per instructions

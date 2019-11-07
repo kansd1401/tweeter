@@ -1,0 +1,35 @@
+input {
+  font-family: 'Bungee', sans-serif;
+  position: relative;
+  background-color: #4056A1;
+  color: #FFFFFF;
+  float: left;
+}
+
+.warning {
+  color: red;
+  width: auto;
+  border: 3px solid red;
+  padding-bottom: 40 px;
+  position: relative;
+}
+
+.counter {
+  font-size: larger;
+  float: right;
+  font-family: 'Bungee', sans-serif;
+  position: relative;
+}
+
+textarea {
+  outline: none;
+  border-top: 0px;
+  border-bottom: 3px solid black;
+  border-right: 0px;
+  border-left: 0px;
+  resize: none;
+  padding: 15px;
+  width: 100%;
+  top: 0px;
+  position: relative;
+}
