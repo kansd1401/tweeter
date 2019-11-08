@@ -1,6 +1,6 @@
 const renderTweets = function(tweets) {
 // loops through tweets
-  for (let user = tweets.length-1;user >= 0;user--) {
+  for (let user = tweets.length - 1; user >= 0; user--) {
     // calls createTweetElement for each tweet
     const $tweet = createTweetElement(tweets[user]);
     // takes return value and appends it to the tweets container
@@ -15,6 +15,7 @@ const escape =  function(str) {
   return div.innerHTML;
 };
 
+//Creates a article tag attachs html to it and returns it
 const createTweetElement = (tweetData) => {
   const $tweet = $("<article>").addClass("tweet");
   const safeHtml = escape(tweetData.content.text);
@@ -38,36 +39,35 @@ const createTweetElement = (tweetData) => {
   return $tweet;
 };
 
+//loads tweets from the server side and calls renderTweets function with the data
 const loadTweets = () => {
   $.ajax({url: '/tweets'})
     .then((res) => {
       renderTweets(res);
     })
     .fail(() => {
-      console.log('dont work');
+      console.log('Server down')
     });
 };
 
-const warn = () => {
-  $(".warning").slideDown();
-};
+//toggle warning for posting a new tweet that doesn't follow rules
+const warn = () => {$(".warning").slideDown();};
+const warnHide = () => {$(".warning").slideUp();};
 
-const warnHide = () => {
-  $(".warning").slideUp();
-};
-
+//Posts the event data when tweet is clicked and checks if the input follows rules or not
 const postTweet = function(event) {
   event.preventDefault();
   const data = $(this).serialize();
   const $content = $("#input").val();
   if ($content.length > 140) {
-    $('.warningText').text('You are exceeding the charachter limit!')
+    $('.warningText').text('You are exceeding the charachter limit!');
     warn();
   } else if ($content.length === 0) {
-    $('.warningText').text('You are posting an empty tweet!')
+    $('.warningText').text('You are posting an empty tweet!');
     warn();
   } else {
-    warnHide()
+    //posts with ajax and hides the warning if it was triggered
+    warnHide();
     $.ajax({
       type: 'POST',
       url: '/tweets',
@@ -75,12 +75,13 @@ const postTweet = function(event) {
       .then(()=> {
         $("#input").val('');
         $('.new-tweet').empty();
-        $('#counter').text(140)
+        $('#counter').text(140);
         loadTweets();
-    });
+      });
   }
 };
 
+//custom function increasing textarea(input) for posting new tweets so they just increase in height according to the length instead of adding a scroll bar
 $(document)
   .one('focus.autoExpand', 'textarea.autoExpand', function() {
     let savedValue = this.value;
@@ -93,41 +94,48 @@ $(document)
     this.rows = minRows;
     rows = Math.ceil((this.scrollHeight - this.baseScrollHeight) / 16);
     this.rows = minRows + rows;
-});
+  });
 
 //When pages loaded starts working on the script
 $(() => {
+  //hides my warning,icon(scroll to top) and posttweet when page is loaded
   $("#new-post").animate({'margin-top': "-240px"});
-  loadTweets();
-  warnHide();
   $('#backUp').hide();
   let hidden = true;
+  warnHide();
+  //loads tweet
+  loadTweets();
+  //if not scrolled to the top shows my scroll to top icon
   $(window).scroll(() => {
-    if($(window).scrollTop() === 0) {
+    if ($(window).scrollTop() === 0) {
       $("#backUp").hide();
-    }else{
+    } else {
       $('#backUp').show();
     }
   });
+  //clicking on the scrollToTop scrolls it to top
   $('#backUp').click(() => {
     $("html").animate({ scrollTop: 0 },);
   });
-  $("#input").keypress(function (e) {
-    if(e.keyCode == 13 && !e.shiftKey) {
+  //Pressing enter key in textarea also posts but shift+enter doesn't
+  $("#input").keypress(function(e) {
+    if (e.keyCode == 13 && !e.shiftKey) {
       $('#new-post').submit();
     }
   });
-  $('#new-post').submit(postTweet)
-  $('#show-post').click(() => {
+  //listening for submit on the tweet key
+  $('#new-post').submit(postTweet);
+  //Toggles the new tweet from hiding and showing
+  $('#show-post').click((hidden) => {
     if (hidden) {
       $("#new-post").animate({'margin-top': "00px"});
       $("#input").focus();
-      warnHide()
+      warnHide();
       hidden = false;
     } else {
       $("#new-post").animate({'margin-top': "-240px"});
       $("#input").val('');
-      warnHide()
+      warnHide();
       hidden = true;
     }
   });
