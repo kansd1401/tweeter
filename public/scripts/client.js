@@ -1,9 +1,3 @@
-/*
- * Client-side JS logic goes here
- * jQuery is already loaded
- * Reminder: Use (and do all your DOM work in) jQuery's document ready function
- */
-
 const renderTweets = function(tweets) {
 // loops through tweets
   for (let user = tweets.length-1;user >= 0;user--) {
@@ -14,6 +8,7 @@ const renderTweets = function(tweets) {
   }
 };
 
+//If the user submits scripts it makes them safe
 const escape =  function(str) {
   let div = document.createElement('div');
   div.appendChild(document.createTextNode(str));
@@ -57,6 +52,8 @@ const warn = () => {
   $(".warning").slideToggle();
 };
 
+
+
 $(document)
   .one('focus.autoExpand', 'textarea.autoExpand', function() {
     let savedValue = this.value;
@@ -88,6 +85,31 @@ $(() => {
   $('#backUp').click(() => {
     $("html").animate({ scrollTop: 0 },);
   });
+  $("#input").keypress(function (e) {
+    if(e.which == 13) {
+      e.preventDefault();
+      const data = $(this).serialize();
+      const $content = $("#input").val();
+      if ($content.length > 140) {
+        warn();
+        setTimeout(warn,3000);
+      } else if ($content.length === 0) {
+        warn();
+        setTimeout(warn,3000);
+      } else {
+        $.ajax({
+          type: 'POST',
+          url: '/tweets',
+          data: data})
+          .then(()=> {
+            $("#input").val('');
+            $('.new-tweet').empty();
+            loadTweets();
+          });
+      }
+    }
+  });
+
   $('#new-post').submit(function(event) {
     event.preventDefault();
     const data = $(this).serialize();

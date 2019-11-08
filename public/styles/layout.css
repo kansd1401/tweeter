@@ -46,6 +46,7 @@ main {
 
  #backUp:hover {
    color: #4056A1;
+   cursor: pointer;
  }
 
  #backUp:focus {outline:0;}
@@ -54,9 +55,12 @@ main {
   background-color: #FFFFFF;
   position: fixed;
   color: black;
+  font-size: 40px;
   border: none;
   right: 1%;
   bottom: 5%;
+  height: 50px;
+  width: 50px;
 }
 
  @media only screen and (min-width: 1024px) {
