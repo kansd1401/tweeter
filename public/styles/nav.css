@@ -28,6 +28,14 @@ nav span {
   position: relative;
 }
 
+#show-post:focus {outline:0;}
+
+#show-post{
+  background-color: #4056A1;
+  color: #ffffff;
+  border: none;
+}
+
 #show-post:hover {
   color: rgb(141, 153, 192);
 }

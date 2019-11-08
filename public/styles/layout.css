@@ -48,9 +48,13 @@ main {
    color: #4056A1;
  }
 
+ #backUp:focus {outline:0;}
+
  #backUp {
+  background-color: #FFFFFF;
   position: fixed;
   color: black;
+  border: none;
   right: 1%;
   bottom: 5%;
 }
