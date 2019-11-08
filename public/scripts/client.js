@@ -49,10 +49,37 @@ const loadTweets = () => {
 };
 
 const warn = () => {
-  $(".warning").slideToggle();
+  $(".warning").slideDown();
 };
 
+const warnHide = () => {
+  $(".warning").slideUp();
+};
 
+const postTweet = function(event) {
+  event.preventDefault();
+  const data = $(this).serialize();
+  const $content = $("#input").val();
+  if ($content.length > 140) {
+    $('.warningText').text('You are exceeding the charachter limit!')
+    warn();
+  } else if ($content.length === 0) {
+    $('.warningText').text('You are posting an empty tweet!')
+    warn();
+  } else {
+    warnHide()
+    $.ajax({
+      type: 'POST',
+      url: '/tweets',
+      data: data})
+      .then(()=> {
+        $("#input").val('');
+        $('.new-tweet').empty();
+        $('#counter').text(140)
+        loadTweets();
+    });
+  }
+};
 
 $(document)
   .one('focus.autoExpand', 'textarea.autoExpand', function() {
@@ -72,7 +99,7 @@ $(document)
 $(() => {
   $("#new-post").animate({'margin-top': "-240px"});
   loadTweets();
-  warn();
+  warnHide();
   $('#backUp').hide();
   let hidden = true;
   $(window).scroll(() => {
@@ -86,60 +113,21 @@ $(() => {
     $("html").animate({ scrollTop: 0 },);
   });
   $("#input").keypress(function (e) {
-    if(e.which == 13) {
-      e.preventDefault();
-      const data = $(this).serialize();
-      const $content = $("#input").val();
-      if ($content.length > 140) {
-        warn();
-        setTimeout(warn,3000);
-      } else if ($content.length === 0) {
-        warn();
-        setTimeout(warn,3000);
-      } else {
-        $.ajax({
-          type: 'POST',
-          url: '/tweets',
-          data: data})
-          .then(()=> {
-            $("#input").val('');
-            $('.new-tweet').empty();
-            loadTweets();
-          });
-      }
+    if(e.keyCode == 13 && !e.shiftKey) {
+      $('#new-post').submit();
     }
   });
-
-  $('#new-post').submit(function(event) {
-    event.preventDefault();
-    const data = $(this).serialize();
-    const $content = $("#input").val();
-    if ($content.length > 140) {
-      warn();
-      setTimeout(warn,3000);
-    } else if ($content.length === 0) {
-      warn();
-      setTimeout(warn,3000);
-    } else {
-      $.ajax({
-        type: 'POST',
-        url: '/tweets',
-        data: data})
-        .then(()=> {
-          $("#input").val('');
-          $('.new-tweet').empty();
-          loadTweets();
-        });
-    }
-  });
+  $('#new-post').submit(postTweet)
   $('#show-post').click(() => {
     if (hidden) {
       $("#new-post").animate({'margin-top': "00px"});
       $("#input").focus();
+      warnHide()
       hidden = false;
     } else {
       $("#new-post").animate({'margin-top': "-240px"});
       $("#input").val('');
+      warnHide()
       hidden = true;
     }
   });

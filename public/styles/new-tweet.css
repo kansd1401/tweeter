@@ -14,7 +14,8 @@ input {
   position: relative;
 }
 
-#btn:hover{
+#btn{
+  border: none;
   cursor: pointer;
 }
 
