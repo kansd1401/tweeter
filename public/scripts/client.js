@@ -6,7 +6,7 @@
 
 const renderTweets = function(tweets) {
 // loops through tweets
-  for (let user = tweets.length-1;user => 0;user--) {
+  for (let user = tweets.length-1;user >= 0;user--) {
     // calls createTweetElement for each tweet
     const $tweet = createTweetElement(tweets[user]);
     // takes return value and appends it to the tweets container
@@ -57,12 +57,37 @@ const warn = () => {
   $(".warning").slideToggle();
 };
 
+$(document)
+  .one('focus.autoExpand', 'textarea.autoExpand', function() {
+    let savedValue = this.value;
+    this.value = '';
+    this.baseScrollHeight = this.scrollHeight;
+    this.value = savedValue;
+  })
+  .on('input.autoExpand', 'textarea.autoExpand', function() {
+    let minRows = this.getAttribute('data-min-rows') | 0, rows;
+    this.rows = minRows;
+    rows = Math.ceil((this.scrollHeight - this.baseScrollHeight) / 16);
+    this.rows = minRows + rows;
+});
+
 //When pages loaded starts working on the script
 $(() => {
   $("#new-post").animate({'margin-top': "-240px"});
   loadTweets();
   warn();
+  $('#backUp').hide();
   let hidden = true;
+  $(window).scroll(() => {
+    if($(window).scrollTop() === 0) {
+      $("#backUp").hide();
+    }else{
+      $('#backUp').show();
+    }
+  });
+  $('#backUp').click(() => {
+    $("html").animate({ scrollTop: 0 },);
+  });
   $('#new-post').submit(function(event) {
     event.preventDefault();
     const data = $(this).serialize();
@@ -97,16 +122,3 @@ $(() => {
     }
   });
 });
-$(document)
-  .one('focus.autoExpand', 'textarea.autoExpand', function() {
-    let savedValue = this.value;
-    this.value = '';
-    this.baseScrollHeight = this.scrollHeight;
-    this.value = savedValue;
-  })
-  .on('input.autoExpand', 'textarea.autoExpand', function() {
-    let minRows = this.getAttribute('data-min-rows') | 0, rows;
-    this.rows = minRows;
-    rows = Math.ceil((this.scrollHeight - this.baseScrollHeight) / 16);
-    this.rows = minRows + rows;
-  });
