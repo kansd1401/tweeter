@@ -34,6 +34,3 @@ Here are some client side features
 - chance
 - express
 - Node 5.10.x or above
-
-
--

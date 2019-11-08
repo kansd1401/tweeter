@@ -126,7 +126,7 @@ $(() => {
   //listening for submit on the tweet key
   $('#new-post').submit(postTweet);
   //Toggles the new tweet from hiding and showing
-  $('#show-post').click((hidden) => {
+  $('#show-post').click(() => {
     if (hidden) {
       $("#new-post").animate({'margin-top': "00px"});
       $("#input").focus();
