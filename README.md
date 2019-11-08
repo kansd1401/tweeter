@@ -16,7 +16,7 @@ Here are some client side features
 
 !["Screenshot of editing URLs page"](https://github.com/kansd1401/tweeter/blob/master/screenshots/tab-top.png)
 !["Screenshot of users URLs page"](https://github.com/kansd1401/tweeter/blob/master/screenshots/tab-feed.png)
-!["Screenshot of adding a new URL page"](https://github.com/kansd1401/tweeter/blob/master/screenshots/desk-erro.png)
+!["Screenshot of adding a new URL page"](https://github.com/kansd1401/tweeter/blob/master/screenshots/desk-error.png)
 !["Screenshot of registery page"](https://github.com/kansd1401/tweeter/blob/master/screenshots/desk-hover.png)
 !["Screenshot of registery page"](https://github.com/kansd1401/tweeter/blob/master/screenshots/desk-scroll.png)
 
