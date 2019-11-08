@@ -52,15 +52,15 @@ main {
  #backUp:focus {outline:0;}
 
  #backUp {
-  background-color: #FFFFFF;
+  background-color:transparent;
   position: fixed;
   color: black;
-  font-size: 40px;
+  font-size: 30px;
   border: none;
-  right: 1%;
+  right: 0.5%;
   bottom: 5%;
-  height: 50px;
-  width: 50px;
+  height: 40px;
+  width: 40px;
 }
 
  @media only screen and (min-width: 1024px) {
