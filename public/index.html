@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="/styles/new-tweet.css" type="text/css" />
 
     <link rel="stylesheet" href="/styles/tweet.css" type="text/css" />
+    
 
     <link href="https://fonts.googleapis.com/css?family=Bungee|Source+Sans+Pro:300i,600i&display=swap" rel="stylesheet">
 
@@ -29,7 +30,8 @@
 
     <!-- App JS -->
     <script  src="/scripts/client.js"></script>
-
+    
+    <script src="https://momentjs.com/downloads/moment.js"></script>
 
     <script src="https://kit.fontawesome.com/6264ea653b.js" crossorigin="anonymous"></script>
 
@@ -39,7 +41,7 @@
 
   <body>
     <!-- Top nav bar (fixed) -->
-    <nav>
+    <nav class="navBar">
       <span>tweeter</span>
       <div  class="show-post">
           <span class="writeTweet">Post tweet</span>
@@ -64,7 +66,7 @@
               Ooh baby what is you doing
               <i class="fas fa-exclamation-triangle"></i>
           </div>
-        <textarea id="input" cols="40" name="text" placeholder="What are you humming about?"></textarea>
+        <textarea id="input" class='autoExpand' rows='4' data-min-rows='4' name="text" placeholder="What are you humming about?"></textarea>
         <input id="btn" type="submit" value="Tweet" method="POST" action="/tweets">
         <span id="counter" class="counter">140</span>
       </form>

@@ -22,6 +22,10 @@ article:hover .userId {
   visibility: visible;
 }
 
+article:hover .shortcuts{
+  visibility: visible;
+}
+
 .content {
   padding:0px;
   position: relative;
@@ -69,4 +73,5 @@ article header {
   float: right;
   font-size: medium;
   position: block;
+  visibility: hidden;
 }
