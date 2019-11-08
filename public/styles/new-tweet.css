@@ -14,6 +14,10 @@ input {
   position: relative;
 }
 
+#btn:hover{
+  cursor: pointer;
+}
+
 .counter {
   font-size: larger;
   float: right;
